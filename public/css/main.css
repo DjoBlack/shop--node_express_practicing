@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+main {
+    padding: 10px;
+    margin: auto;
+}
+
+.centered {
+    text-align: center;
+}
+
+.main-header {
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255, 123, 0, 0.932);
+    padding: 0 20px;
+}
+
+.main-header__nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.main-header__item-list {
+    font-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-header__item {
+    list-style-type: none;
+    margin: 0 15px;
+    padding: 0;
+}
+
+.main-header__item a {
+    text-decoration: none;
+    color: white;
+}
+
+.main-header__item a:hover,
+.main-header__item a:active,
+.main-header__item a.active {
+    color: brown;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: stretch;
+  }
+  
+.card {
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.card__header,
+.card__content {
+padding: 1rem;
+}
+
+.card__header h1,
+.card__content h1,
+.card__content h2,
+.card__content p {
+margin: 0;
+}
+
+.card__image {
+width: 100%;
+}
+
+.card__image img {
+width: 100%;
+}
+
+.card__actions {
+    padding: 1rem;
+    text-align: center;
+}
+
+.card__actions button,
+.card__actions a,
+.card__actions form {
+    display: inline;
+    margin: 0 0.25rem;
+}
+
+.card__actions a {
+    padding: 1.5px 5px;
+}
+
+.btn {
+font: inherit;
+border: 1px solid rgba(255, 123, 0, 0.932);
+color: rgba(255, 123, 0, 0.932);
+background: white;
+border-radius: 3px;
+cursor: pointer;
+text-decoration: none;
+}
+
+.btn:hover,
+.btn:active {
+background-color: rgba(255, 123, 0, 0.932);
+color: white;
+}
