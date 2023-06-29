@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const p = path.join(path.dirname(process.mainModule.filename), 'data', 'product.json');
+const p = path.join(path.dirname(require.main.filename), 'data', 'product.json');
 
 const getProductsFromFile = cb => {
         fs.readFile(p, (err, fileContent) => {
@@ -33,7 +33,7 @@ module.exports = class Product {
 
     update() {
         getProductsFromFile((products) => {
-            console.log(products);
+            // console.log(products);
             if(this.id) {
                 const existingProduct = products.findIndex(prod => prod.id === this.id);
                 const updatedProduct = [...products];
