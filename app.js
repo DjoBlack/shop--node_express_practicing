@@ -4,6 +4,7 @@ const path = require('path');
 
 const express = require('express');
 // const expressHbs = require('express-handlebars');
+const mongoConnect = require('./utils/database');
 
 const app = express();
 
@@ -24,4 +25,8 @@ app.use(shopRoutes);
 
 app.use(errors.get404);
 
-app.listen(3000);
+mongoConnect((client) => {
+    console.log(client);
+    app.listen(3000);
+});
+
