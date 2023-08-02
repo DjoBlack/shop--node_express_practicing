@@ -38,20 +38,27 @@ exports.postProductEdit = (req, res) => {
     const updatedDescription = req.body.description;
     const updatedPrice = req.body.price;
 
-    const updatedProduct = new Product(prodId, updatedTitle, updatedDescription, updatedPrice);
-    updatedProduct.update();
+    // const updatedProduct = new Product(prodId, updatedTitle, updatedDescription, updatedPrice);
+    // updatedProduct.update();
     res.redirect('/admin/product-list');
 }
 
 exports.getProductList = (req, res) => {
-    Product.fetchAll((products) => {
-        res.render('admin/product-list', {
-            prods: products, 
-            pageTitle: 'Admin Products List', 
-            path: '/admin/product-list'
-        });
+    Product
+        .fetchAll()
+        .then(products => {
+            res.render('admin/product-list', {
+                prods: products, 
+                pageTitle: 'Admin Products List', 
+                path: '/admin/product-list', 
+                hasProducts: products.length > 0, 
+                activeShop: true
+            });
         // console.log(products);
-    });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 }
 
 exports.postProductDelete = (req, res) => {
