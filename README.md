@@ -5,6 +5,7 @@
   <li>express</li>
   <li>nodemon</li>
   <li>ejs</li>
+  <li>mongodb</li>
 </ul>
 
 <h3>To run the project you need to type command "npm start" in your terminal.</h3>
