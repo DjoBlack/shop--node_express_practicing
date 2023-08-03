@@ -1,0 +1,22 @@
+<%- include('../includes/head.ejs') %>
+        <link rel="stylesheet" href="/css/form.css">
+    </head>
+
+    <body>
+<%- include('../includes/nav.ejs') %>
+
+        <main>
+            <form action="create-user" method="POST" class="product-form">
+                <div class="form-control">
+                    <label for="title">User Name</label>
+                    <input type="text" name="userName" id="userName">
+                </div>
+                <div class="form-control">
+                    <label for="price">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <button type="submit">Add User</button>
+            </form>
+        </main>
+    </body>
+<%- include('../includes/bottom.ejs') %>
