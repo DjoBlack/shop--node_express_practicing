@@ -2,11 +2,12 @@ const mongodb = require('mongodb');
 const getDB = require('../utils/database').getDB;
 
 class Product {
-    constructor(title, price, description, id) {
+    constructor(title, price, description, id, userId) {
         this.title = title;
         this.price = price;
         this.description = description;
         this._id = id ? new mongodb.ObjectId(id) : null;
+        this.userId = new mongodb.ObjectId(userId);
     }
 
     save() {
@@ -34,7 +35,7 @@ class Product {
         .find()
         .toArray()
         .then(products => {
-            console.log(products);
+            // console.log(products);
             return products;
         })
         .catch(err => {

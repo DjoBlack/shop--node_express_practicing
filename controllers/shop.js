@@ -1,5 +1,4 @@
 const Product = require('../models/product.js');
-const Cart = require('../models/cart.js');
 
 exports.getIndex = (req, res) => {
     Product
@@ -49,6 +48,20 @@ exports.getProduct = (req, res, next) => {
         .catch(err => {
             console.log(err);
         });
+};
+
+exports.postCart = (req, res, next) => {
+    const prodId = req.body.productId;
+    Product.findById(prodId)
+    .then(product => {
+        return req.user.addToCart(product);
+    })
+    .then(result => {
+        console.log(result);
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }
 
 // exports.getCart = (req, res) => {

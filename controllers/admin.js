@@ -9,10 +9,10 @@ exports.getProductAdd = (req, res, next) => {
 
 exports.postProductAdd = (req, res, next) => {
     const title = req.body.title;
-    const description = req.body.description;
     const price = req.body.price;
+    const description = req.body.description;
 
-    const product = new Product(title, price, description);
+    const product = new Product(title, price, description, null, req.user._id);
     product.save();
     res.redirect('/admin/product-list');
 };
@@ -43,7 +43,7 @@ exports.postProductEdit = (req, res, next) => {
     const updatedPrice = req.body.price;
     const updatedDescription = req.body.description;
 
-    const product = new Product(updatedTitle, updatedPrice, updatedDescription, prodId);
+    const product = new Product(updatedTitle, updatedPrice, updatedDescription, prodId, req.user._id);
     product.save()
         .then(result => {
             console.log('Product Updated!');
