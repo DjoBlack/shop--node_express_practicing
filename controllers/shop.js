@@ -68,12 +68,25 @@ exports.postCart = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
-    req.user.getCart().then(products => {
+    req.user
+    .getCart()
+    .then(products => {
         res.render('shop/cart', {
             products: products, 
             pageTitle: 'Cart', 
             path: '/cart'
         });
+    }).catch(err => {
+        console.log(err);
+    })
+};
+
+exports.postCartRemoveItem = (req, res, next) => {
+    const prodId = req.body.productId;
+    req.user
+    .deleteItemFromCart(prodId)
+    .then(result => {
+        res.redirect('/cart');
     }).catch(err => {
         console.log(err);
     })
