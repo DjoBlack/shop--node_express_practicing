@@ -92,6 +92,22 @@ exports.postCartRemoveItem = (req, res, next) => {
     })
 };
 
+exports.postOrderCreate = (req, res, next) => {
+    req.user
+        .createOrder()
+        .then(result => {
+            console.log(result);
+            res.redirect('/orders');
+        })
+};
+
+exports.getOrders = (req, res) => {
+    res.render('shop/orders', {
+        pageTitle: 'Orders', 
+        path: '/orders'
+    });
+};
+
 // exports.getCart = (req, res) => {
 //     Cart.getCart(cart => {
 //         Product.fetchAll(products => {
@@ -140,9 +156,3 @@ exports.postCartRemoveItem = (req, res, next) => {
 //     });
 // }
 
-// exports.getOrders = (req, res) => {
-//     res.render('shop/orders', {
-//         pageTitle: 'Orders', 
-//         path: '/corders'
-//     });
-// }
