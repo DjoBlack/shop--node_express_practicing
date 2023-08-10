@@ -4,6 +4,10 @@
     position: relative;
 }
 
+.cart h2 {
+    text-align: center;
+}
+
 .cart-item {
     margin-top: 25px;
     list-style-position: inside;
