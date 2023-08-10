@@ -1,0 +1,30 @@
+.cart {
+    margin: auto;
+    width: 50%;
+    position: relative;
+}
+
+.cart-item {
+    margin-top: 25px;
+    list-style-position: inside;
+}
+
+.cart-item p,
+.cart-item form {
+    display: inline;
+}
+
+.cart-item .btn {
+    position: absolute;
+    right: 10px;
+    margin: auto;
+}
+
+.cart .place-order {
+    text-align: center;
+}
+
+.cart .place-order .btn {
+    margin-top: 40px;
+    padding: 10px 40px;
+}
