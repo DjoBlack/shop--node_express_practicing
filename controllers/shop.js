@@ -101,11 +101,23 @@ exports.postOrderCreate = (req, res, next) => {
         })
 };
 
-exports.getOrders = (req, res) => {
-    res.render('shop/orders', {
-        pageTitle: 'Orders', 
-        path: '/orders'
-    });
+exports.getOrders = (req, res, next) => {
+    req.user
+        .getOrders()
+        .then(orders => {
+            res.render('shop/orders', {
+                pageTitle: 'Orders', 
+                path: '/orders', 
+                orders: orders
+            });
+            let result = (orders.forEach(order => {
+                console.log(order);
+            }));
+            console.log(result)
+        })
+        .catch(err => {
+            console.log(err);
+        })
 };
 
 // exports.getCart = (req, res) => {
