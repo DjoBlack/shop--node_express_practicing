@@ -63,11 +63,43 @@ class Product {
         return db.collection('products')
         .deleteOne({_id: new mongodb.ObjectId(prodId)})
         .then(result => {
+            Product.removeFromCartDuringDelete(prodId);
             console.log('Product deleted!');
         })
         .catch(err => {
             console.log(err);
         })
+    }
+
+    static removeFromCartDuringDelete(prodId) {
+        const db = getDB();
+        return db
+            .collection('users')
+            .find({"cart.items.productId": new mongodb.ObjectId(prodId)})
+            .toArray()
+            .then(arrayOfCarts => {
+                arrayOfCarts.forEach(i => {
+                    // console.log(i);
+                    const updatedCartItems = i.cart.items.filter(item => {
+                        return item.productId.toString() !== prodId.toString();
+                    });
+
+                    const db = getDB();
+                    return db
+                        .collection('users')
+                        .updateOne(
+                            { _id: new mongodb.ObjectId(i._id) }, 
+                            { $set: { cart: {items: updatedCartItems}}}
+                        )
+                        .then(result => {
+                            console.log("item removed from user cart.");
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                })
+            });
+
     }
 }
 
