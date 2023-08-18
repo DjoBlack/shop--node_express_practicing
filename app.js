@@ -1,6 +1,8 @@
 const http = require('http');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mongoose = require('mongoose');
+const DBConnection = require('./utils/DB');
 
 const express = require('express');
 // const expressHbs = require('express-handlebars');
@@ -21,18 +23,18 @@ const errors = require('./controllers/error.js');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-    User.findById('64cb990105728de7c6c2d369')
-    .then(user => {
-        // req.user = user;
-        req.user = new User(user.name, user.email, user.cart, user._id);
-        // console.log(user);
-        next();
-    })
-    .catch(err => {
-        console.log(err)
-    })
-});
+// app.use((req, res, next) => {
+//     User.findById('64cb990105728de7c6c2d369')
+//     .then(user => {
+//         // req.user = user;
+//         req.user = new User(user.name, user.email, user.cart, user._id);
+//         // console.log(user);
+//         next();
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
+// });
 
 
 app.use('/admin', adminRoutes);
@@ -43,7 +45,11 @@ app.use(userRoutes);
 
 app.use(errors.get404);
 
-mongoConnect(() => {
-    app.listen(3000);
-});
+mongoose.connect(DBConnection)
+    .then(result => {
+        app.listen(3000);
+    })
+    .catch(err => {
+        console.log(err)
+    });
 
