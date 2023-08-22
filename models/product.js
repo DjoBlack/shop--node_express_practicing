@@ -14,6 +14,11 @@ const productSchema = new Schema({
     description: {
         type: String, 
         required: false
+    }, 
+    userId: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User', 
+        required: true
     }
 });
 
