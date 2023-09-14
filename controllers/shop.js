@@ -8,7 +8,8 @@ exports.getIndex = (req, res) => {
             res.render('shop/index', {
                 prods: products, 
                 pageTitle: 'Shop', 
-                path: '/'
+                path: '/', 
+                isLoggedIn: req.isLoggedIn
             });
             // console.log(products);
         })
@@ -26,7 +27,8 @@ exports.getProductList = (req, res, next) => {
                 pageTitle: 'Products List', 
                 path: '/product-list', 
                 hasProducts: products.length > 0, 
-                activeShop: true
+                activeShop: true, 
+                isLoggedIn: req.isLoggedIn
             });
         // console.log(products);
         })
@@ -43,7 +45,8 @@ exports.getProduct = (req, res, next) => {
             res.render('shop/product-detail', {
                 product: product, 
                 pageTitle: 'Product Details', 
-                path: ''
+                path: '', 
+                isLoggedIn: req.isLoggedIn
             });
         })
         .catch(err => {
@@ -77,7 +80,8 @@ exports.getCart = (req, res, next) => {
         res.render('shop/cart', {
             products: products, 
             pageTitle: 'Cart', 
-            path: '/cart'
+            path: '/cart', 
+            isLoggedIn: req.isLoggedIn
         });
     }).catch(err => {
         console.log(err);
@@ -126,7 +130,8 @@ exports.getOrders = (req, res, next) => {
             res.render('shop/orders', {
                 pageTitle: 'Orders', 
                 path: '/orders', 
-                orders: orders
+                orders: orders, 
+                isLoggedIn: req.isLoggedIn
             });
             let result = (orders.forEach(order => {
                 console.log(order);

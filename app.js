@@ -18,6 +18,7 @@ app.set('views', 'views');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/auth');
 const errors = require('./controllers/error.js');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -40,6 +41,8 @@ app.use((req, res, next) => {
 app.use('/admin', adminRoutes);
 
 app.use(shopRoutes);
+
+app.use(authRoutes);
 
 app.use(userRoutes);
 

@@ -3,7 +3,8 @@ const Product = require('../models/product.js');
 exports.getProductAdd = (req, res, next) => {
     res.render('admin/add-product', {
         pageTitle: 'Add Product Page', 
-        path: '/admin/add-product'    
+        path: '/admin/add-product', 
+        isLoggedIn: req.isLoggedIn  
     });
 };
 
@@ -33,7 +34,8 @@ exports.getProductEdit = (req, res, next) => {
             res.render('admin/edit-product', {
                 product: product, 
                 pageTitle: 'Product Edit Page', 
-                path: 'admin/edit-product'
+                path: 'admin/edit-product', 
+                isLoggedIn: req.isLoggedIn
             });
         })
         .catch(err => {
@@ -74,7 +76,8 @@ exports.getProductList = (req, res) => {
                 pageTitle: 'Admin Products List', 
                 path: '/admin/product-list', 
                 hasProducts: products.length > 0, 
-                activeShop: true
+                activeShop: true, 
+                isLoggedIn: req.isLoggedIn
             });
         // console.log(products);
         })

@@ -13,6 +13,7 @@
             <li class="main-header__item">
                 <a href="/orders" class="<%- path==='/orders' ? 'active' : '' %>">Orders</a>
             </li>
+            <% if(isLoggedIn){ %>
             ||
             <li class="main-header__item">
                 <a href="/admin/product-list" class="<%- path==='/admin/product-list' ? 'active' : '' %>">Admin Products List</a>
@@ -20,9 +21,15 @@
             <li class="main-header__item">
                 <a href="/admin/add-product" class="<%- path==='/admin/add-product' ? 'active' : '' %>">Add Product</a>
             </li>
+            <% } %>
             ||
             <li class="main-header__item">
                 <a href="/create-user" class="<%- path==='/create-user' ? 'active' : '' %>">Add User</a>
+            </li>
+        </ul>
+        <ul class="main-header__item-list">
+            <li class="main-header__item">
+                <a href="/login" class="<%- path==='/login' ? 'active' : '' %>">Login</a>
             </li>
         </ul>
     </nav>
