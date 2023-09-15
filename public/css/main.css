@@ -37,11 +37,19 @@ main {
     margin: 0;
     display: flex;
 }
-
+ 
 .main-header__item {
     list-style-type: none;
     margin: 0 15px;
     padding: 0;
+}
+
+.main-header__item .btn {
+    list-style-type: none;
+    margin: 0 15px;
+    padding: 0;
+    color: white;
+    background-color: transparent;
 }
 
 .main-header__item a {
@@ -51,7 +59,8 @@ main {
 
 .main-header__item a:hover,
 .main-header__item a:active,
-.main-header__item a.active {
+.main-header__item a.active,
+.main-header__item .btn:hover {
     color: brown;
 }
 .grid {
