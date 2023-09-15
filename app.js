@@ -33,11 +33,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'secret', resave: false, saveUninitialized: false, store: store}));
 
 app.use((req, res, next) => {
-    User.findById('64e3903291fddfa9c6c46d91')
+    if(!req.session.user) {
+        return next();
+    }
+    User.findById(req.session.user._id)
     .then(user => {
-        // req.user = user;
         req.user = user;
-        // console.log(user);
         next();
     })
     .catch(err => {

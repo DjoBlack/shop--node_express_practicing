@@ -4,7 +4,7 @@ exports.getProductAdd = (req, res, next) => {
     res.render('admin/add-product', {
         pageTitle: 'Add Product Page', 
         path: '/admin/add-product', 
-        isLoggedIn: req.isLoggedIn  
+        isLoggedIn: req.session.isLoggedIn  
     });
 };
 
@@ -77,7 +77,7 @@ exports.getProductList = (req, res) => {
                 path: '/admin/product-list', 
                 hasProducts: products.length > 0, 
                 activeShop: true, 
-                isLoggedIn: req.isLoggedIn
+                isLoggedIn: req.session.isLoggedIn
             });
         // console.log(products);
         })

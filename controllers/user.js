@@ -4,7 +4,7 @@ exports.getUserCreate = (req, res, next) => {
     res.render('user/create-user', {
         pageTitle: 'Add User', 
         path: '/create-user',
-        isLoggedIn: req.isLoggedIn   
+        isLoggedIn: req.session.isLoggedIn   
     });
 }
 
